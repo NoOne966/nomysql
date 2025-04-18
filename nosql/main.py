@@ -10,8 +10,11 @@ app = Flask(__name__, static_folder='static')
 app.secret_key = 'mehere'
 
 # MongoDB connection
-import os
-client = pymongo.MongoClient(os.environ.get("MONGO_URI"))
+from flask_pymongo import PyMongo
+
+app.config["MONGO_URI"] = os.environ.get("MONGO_URI")
+mongo = PyMongo(app)
+
 
 mongo = PyMongo(app)
 
