@@ -356,10 +356,19 @@ def log_patient_change(patient_id, email, action):
     }
     mongo.db.triggers.insert_one(trigger_data)
 
+
+@app.before_first_request
+def initialize_indexes():
+    if mongo.db:
+        mongo.db.prescriptions.create_index([("patient_id", 1)])
+        mongo.db.prescriptions.create_index([("doctor_email", 1)])
+        mongo.db.prescriptions.create_index([("date_prescribed", -1)])
+    else:
+        print("MongoDB is not connected properly.")
+
+
 if __name__ == "__main__":
-    
-    mongo.db.prescriptions.create_index([("patient_id", 1)])
-    mongo.db.prescriptions.create_index([("doctor_email", 1)])
-    mongo.db.prescriptions.create_index([("date_prescribed", -1)])
+  app.run(debug=True)  
+   
     
     app.run(debug=True)
