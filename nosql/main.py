@@ -6,6 +6,7 @@ from bson.objectid import ObjectId
 from datetime import datetime
 
 # App configuration
+import os
 app = Flask(__name__, static_folder='static')
 app.secret_key = 'mehere'
 
