@@ -359,7 +359,8 @@ def log_patient_change(patient_id, email, action):
 
 @app.before_first_request
 def initialize_indexes():
-    if mongo.db:
+    if mongo.db is not None:
+   
         mongo.db.prescriptions.create_index([("patient_id", 1)])
         mongo.db.prescriptions.create_index([("doctor_email", 1)])
         mongo.db.prescriptions.create_index([("date_prescribed", -1)])
