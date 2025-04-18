@@ -7,11 +7,12 @@ jmespath==0.10.0
 Js2Py==0.70
 MarkupPy==1.14
 MarkupSafe==2.1.5
-mysqlclient==2.1.1
+# mysqlclient==2.1.1      <-- Commented out
+PyMySQL==1.1.0            # Use this instead
 Naked==0.1.31
 packaging==23.2
 Pillow==9.5.0
-pipwin==0.5.1
+# pipwin==0.5.1           <-- Removed
 pyttsx3==2.90
 pytz==2023.3.post1
 SQLAlchemy==1.4.49
