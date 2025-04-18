@@ -10,7 +10,9 @@ app = Flask(__name__, static_folder='static')
 app.secret_key = 'mehere'
 
 # MongoDB connection
-app.config["MONGO_URI"] = "mongodb://localhost:27017/hospital"
+import os
+client = pymongo.MongoClient(os.environ.get("MONGO_URI"))
+
 mongo = PyMongo(app)
 
 # Login manager setup
